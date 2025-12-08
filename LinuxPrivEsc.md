@@ -156,7 +156,7 @@ System cronjobs:
 ls -la /etc/cron.daily/
 ls -la /etc/cron.hourly/
 ls -la /etc/cron.weekly/
-ls -la /etc/cron.monthly/
+ls -la /etc/cron.monthly/q
 ```
 
 User cronjobs:

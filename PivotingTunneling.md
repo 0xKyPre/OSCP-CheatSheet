@@ -66,6 +66,7 @@ ssh -D 1080 -N -f vagrant@<pivot2_IP>
 ```
 - `-D 1080`:    creates a SOCKS Proxy (Port 1080)
 - `-N`:         no shell
+- `-R`:         reverse port forwarding
 - `-f`:         background
 
 After creating a SOCKS Proxy we need to configure our proxychains

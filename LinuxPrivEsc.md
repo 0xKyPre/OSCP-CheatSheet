@@ -188,6 +188,7 @@ ls -la backup.sh
 ```
 
 ### Step 3 - Exploits
+**Reverse Shell**
 ```
 #!/bin/sh
 
@@ -303,6 +304,30 @@ chmod +x file
 ```
 
 **RUN IT AND HOPE THAT YOUR MACHINE DONT CRASH**
+
+## Upgrade your shell
+first upgrade your shell
+```
+python -c "import pty; pty.spawn('/bin/bash')"
+ruby -e "exec '/bin/bash'"
+perl -e "exec '/bin/bash';"
+```
+
+Then background process netcat with: `ctrl + z`
+
+Then simply stty to foreground back the target machine
+```
+stty raw -echo; fg
+```
+
+Now just choose your prefered terminal environment
+```
+export TERM=xterm
+```
+
+clear and `ctrl + c`
+
+**you successfully upgraded and stabilized your shell**
 
 ## Get password hashes
 ```

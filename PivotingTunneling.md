@@ -94,7 +94,7 @@ proxychains -q nmap -Pn -sT 10.10.10.1
 ### Step 3b - Port forwarding
 For portforwarding we send a single port through a tunnel
 ```
-ssh -L 1080:10.20.20.1:22 vagrant@pivot2
+ssh -L 1080:10.20.20.1:22 user@<TARGET_IP>
 ```
 
 ### Step 3c - Chisel
@@ -153,7 +153,7 @@ sudo arp-scan --interface=eth1 10.10.10.0/24
 
 If you found a target then check the ports out:
 ```
-proxychains nmap -Pn -p22,80,139,445 <target>
+proxychains nmap -Pn -p22,80,139,445 <TARGET_IP>
 ```
 
 **IF NO VALID PORT OR IP THEN PRIVESC ON PIVOT AND DO AN ARP SCAN**
@@ -170,7 +170,7 @@ ss
 ```
 And then we need to use it via root ssh
 ```
-sudo arp-scan --interface=ethX <target>
+sudo arp-scan --interface=ethX <TARGET_IP>
 ```
 
 ### Afterwards

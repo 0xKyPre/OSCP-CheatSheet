@@ -9,3 +9,16 @@ Hello in this CheatSheet you will find an overview about the most important topi
 - [Linux PrivEsc](LinuxPrivEsc.md)
 - [Windows PrivEsc](WindowsPrivEsc.md)
 - [Active Directoy](ActiveDirectoy.md)
+
+## Workflow
+- Enumeration
+    - Basic Enum
+    - Http Enum
+    - Ftp Enum
+    - Smb Enum
+    - Further
+- Inition Foothold
+    - WP -> Themes -> RCE
+- Remote Enumeration
+- PrivEsc
+- Proof & Notes

@@ -1,5 +1,4 @@
 # Pivoting and Tunneling
-
 You want to get access to an internal target. How can you access it -> **Pivoting** and **Tunneling**
 
 ## Pivoting
@@ -61,6 +60,8 @@ Now when we found the target ip we have 2 different approaches. Port forwarding 
 Here we have 3 different approaches depending on what we need
 
 ### Step 3a - Full Pivoting (SSH SOCKS Proxy)
+**NOTE**: UDP-based tools **wont** work over **SOCKS**.
+
 ```
 ssh -D 1080 -N -f vagrant@<pivot2_IP>
 ```

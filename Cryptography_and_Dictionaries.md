@@ -1,4 +1,4 @@
-# Cryptography
+# Cryptography and Dictionary
 
 ## RSA -> Passphrase
 Imagine you have this rsa-private Key:
@@ -28,4 +28,15 @@ john --show rsa.hash
 
 # decrypt
 openssl rsa -in id_rsa -out id_rsa_decrypted
+```
+
+## MD5
+```
+hashcat -m 0 -a 0 hash.txt wordlist.txt
+```
+
+## Dictionary
+sometimes when dictionaries are really big its better to delete all duplicates before bruteforce
+```
+sort word.dic | uniq > word_clean.txt
 ```

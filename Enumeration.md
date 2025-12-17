@@ -10,6 +10,13 @@ arp-scan 10.0.0.0/24
 nmap -sV -sC -Pn -p- <target>
 nmap -p- --min-rate 5000 -T4 -oN fastscan.txt <TARGET_IP>
 ```
+- `-p-`: all 65535 Ports (without only top 1000 Ports)
+- `-sV`: service and version detection
+- `sC`: default NSE Scripts
+- `-Pn`: nmap assumes that the host is always online
+- `T4`: fast scan
+- `-oN`: output normal -> writes output to file
+- `--min-rate <RATE>`: min package sent per second
 
 **Goal:** Identify 1–2 high-value services to attack first (Web, SMB, SSH, FTP).
 
